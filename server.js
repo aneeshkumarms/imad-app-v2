@@ -4,43 +4,69 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne = {
-    title : 'Article one | Aneesh Kumar M S',
-    heading :'Article one',
-    date :'February 15',
-    content : `<p>
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-            </p>
-            
-        
-        
-         
-            <p>
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-            </p>
-            
-       
-        
-         
-            <p>
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-                This is the content of article one.
-            </p>`
-            
+var articles = {
+    
+
+'article-One' : {
+            title : 'Article one | Aneesh Kumar M S',
+            heading :'Article one',
+            date :'February 15',
+            content : `<p>
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                    </p>
+                    
+                
+                
+                 
+                    <p>
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                    </p>
+                    
+               
+                
+                 
+                    <p>
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                        This is the content of article one.
+                    </p>`
+                    
+        },
+'article-Two' :{title : 'Article Two | Aneesh Kumar M S',
+            heading :'Article one',
+            date :'February 17',
+            content : `<p>
+                        This is the content of article one.
+                    </p>
+                    
+                
+                
+                 
+                   `},
+'article-Three' : {title : 'Article Three | Aneesh Kumar M S',
+            heading :'Article Three',
+            date :'March 17',
+            content : `<p>
+                        This is the content of article one.
+                    </p>`
+                    
+                
+                
+                 
+                   }
 };
 function createTemplate(data){
     var title = data.title;
@@ -89,8 +115,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+    var articleName = req.params.articleName;
+  res.send(createTemplate(articles[articleOne]));
 });
 
 app.get('/article-two',function(req,res){
