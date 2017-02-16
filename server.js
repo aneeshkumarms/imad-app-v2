@@ -44,7 +44,7 @@ var articles = {
                     
         },
     'article-two' :{title : 'Article Two | Aneesh Kumar M S',
-                heading :'Article one',
+                heading :'Article Two',
                 date :'February 17',
                 content : `<p>
                             This is the content of article one.
